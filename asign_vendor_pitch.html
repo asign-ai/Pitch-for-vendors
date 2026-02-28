@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>अSIGN — Kerala Stamp Vendors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+Malayalam:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #3B3BF5;
+    --blue-dark: #2525D0;
+    --blue-deep: #0F0F6E;
+    --blue-light: #E8E8FF;
+    --blue-mid: #6B6BFF;
+    --gold: #F5C842;
+    --gold-light: #FFF3B0;
+    --cream: #FAFAF5;
+    --ink: #0D0D1A;
+    --ink-mid: #2D2D4A;
+    --muted: #6B6B8A;
+    --white: #FFFFFF;
+    --green: #1AC98E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(250,250,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(59,59,245,0.1);
+  }
+
+  .nav-logo {
+    font-size: 22px; font-weight: 700;
+    color: var(--blue);
+    display: flex; align-items: center; gap: 4px;
+    text-decoration: none;
+  }
+  .nav-logo .devanagari { font-family: 'Noto Sans Malayalam', sans-serif; color: var(--blue); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: white;
+    border: none; cursor: pointer;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--blue);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(107,107,255,0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(15,15,110,0.4) 0%, transparent 50%),
+      radial-gradient(circle at 60% 80%, rgba(245,200,66,0.08) 0%, transparent 40%);
+  }
+
+  /* Decorative circles */
+  .hero-circle-1 {
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.08);
+    animation: slowspin 30s linear infinite;
+  }
+  .hero-circle-2 {
+    position: absolute; bottom: -150px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+    animation: slowspin 45s linear infinite reverse;
+  }
+  @keyframes slowspin { to { transform: rotate(360deg); } }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 760px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+  .hero-logo-mark {
+    font-size: 80px; font-weight: 900; line-height: 1;
+    color: white;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s ease 0.1s both;
+    display: flex; align-items: center; gap: 4px;
+  }
+  .hero-logo-mark .devanagari {
+    font-family: 'Noto Sans Malayalam', sans-serif;
+    font-size: 72px; font-weight: 700;
+    color: white;
+    line-height: 1;
+  }
+
+  .hero-headline {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.25;
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-headline strong { font-weight: 700; color: white; }
+
+  .hero-malayalam {
+    font-family: 'Noto Sans Malayalam', sans-serif;
+    font-size: 22px; color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
+    font-weight: 400;
+    animation: fadeUp 0.6s ease 0.3s both;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.7;
+    max-width: 540px; margin-bottom: 48px;
+    font-weight: 300;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .btn-primary {
+    background: white; color: var(--blue);
+    padding: 16px 36px; border-radius: 100px;
+    font-weight: 700; font-size: 16px;
+    border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+
+  .btn-ghost {
+    background: transparent; color: white;
+    padding: 16px 36px; border-radius: 100px;
+    font-weight: 500; font-size: 16px;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    cursor: pointer; font-family: 'DM Sans', sans-serif;
+    transition: all 0.25s;
+    text-decoration: none; display: inline-block;
+  }
+  .btn-ghost:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+  /* ─── STAT STRIP ─── */
+  .stats-strip {
+    background: var(--blue-deep);
+    padding: 40px 48px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center; padding: 20px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-size: 48px; font-weight: 700;
+    color: var(--gold); font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    margin-top: 6px; font-weight: 400;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 100px 48px; }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--blue);
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    background: var(--blue-light);
+    border-radius: 100px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 700; line-height: 1.15;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--blue); }
+
+  .section-lead {
+    font-size: 18px; line-height: 1.75;
+    color: var(--muted); max-width: 600px; margin-bottom: 56px;
+  }
+
+  /* ─── PROBLEM SECTION ─── */
+  .problem-section {
+    background: var(--cream);
+  }
+
+  .problem-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .problem-card {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid rgba(0,0,0,0.06);
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .problem-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.08); }
+
+  .problem-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .problem-card:hover::before { transform: scaleX(1); }
+
+  .problem-icon {
+    width: 52px; height: 52px;
+    background: var(--blue-light);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .problem-card h3 {
+    font-size: 18px; font-weight: 600;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .problem-card p {
+    font-size: 15px; color: var(--muted); line-height: 1.65;
+  }
+
+  /* ─── SOLUTION SECTION ─── */
+  .solution-section {
+    background: var(--ink);
+    position: relative; overflow: hidden;
+  }
+
+  .solution-section .section-title { color: white; }
+  .solution-section .section-lead { color: rgba(255,255,255,0.5); }
+  .solution-section .section-tag { background: rgba(59,59,245,0.3); color: rgba(150,150,255,1); }
+
+  .flow-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .flow-steps::before {
+    content: '';
+    position: absolute; top: 40px; left: 10%; right: 10%;
+    height: 1px; background: rgba(255,255,255,0.1);
+    z-index: 0;
+  }
+
+  .flow-step {
+    position: relative; z-index: 1;
+    text-align: center; padding: 0 24px;
+  }
+
+  .step-circle {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: rgba(59,59,245,0.2);
+    border: 1.5px solid rgba(59,59,245,0.5);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 24px;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .flow-step:hover .step-circle {
+    background: var(--blue);
+    border-color: var(--blue);
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(59,59,245,0.4);
+  }
+
+  .step-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--blue-mid); text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .flow-step h3 { font-size: 16px; font-weight: 600; color: white; margin-bottom: 10px; }
+  .flow-step p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ─── BENEFITS ─── */
+  .benefits-section { background: white; }
+
+  .benefits-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .benefits-visual {
+    background: var(--blue);
+    border-radius: 28px;
+    padding: 56px 48px;
+    position: relative; overflow: hidden;
+  }
+
+  .benefits-visual::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .benefits-visual::after {
+    content: '';
+    position: absolute; bottom: -80px; left: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: rgba(245,200,66,0.08);
+  }
+
+  .benefit-visual-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; color: white; font-weight: 700;
+    line-height: 1.2; margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .benefit-visual-sub {
+    font-size: 15px; color: rgba(255,255,255,0.6);
+    margin-bottom: 40px; position: relative; z-index: 1;
+  }
+
+  .income-display {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+
+  .income-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; margin-bottom: 4px; }
+  .income-amount { font-size: 32px; font-weight: 700; color: var(--gold); font-family: 'Playfair Display', serif; }
+  .income-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+
+  .income-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(26,201,142,0.2);
+    border: 1px solid rgba(26,201,142,0.3);
+    border-radius: 100px;
+    padding: 4px 12px;
+    font-size: 12px; color: var(--green); font-weight: 600;
+    position: relative; z-index: 1;
+  }
+
+  .benefits-list { display: flex; flex-direction: column; gap: 20px; }
+
+  .benefit-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 28px 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: all 0.25s;
+  }
+  .benefit-item:hover {
+    border-color: var(--blue-light);
+    background: var(--blue-light);
+    transform: translateX(4px);
+  }
+
+  .benefit-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--blue); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .benefit-item h4 { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .benefit-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── OPTIONAL BADGE ─── */
+  .optional-section {
+    background: var(--gold-light);
+    border-top: 4px solid var(--gold);
+    border-bottom: 4px solid var(--gold);
+    padding: 64px 48px;
+    text-align: center;
+  }
+
+  .optional-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 20px; border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .optional-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700; color: var(--ink-mid);
+    margin-bottom: 16px; line-height: 1.2;
+  }
+
+  .optional-body {
+    font-size: 18px; color: var(--ink-mid);
+    max-width: 640px; margin: 0 auto; line-height: 1.75;
+    font-weight: 300;
+  }
+  .optional-body strong { font-weight: 700; color: var(--blue); }
+
+  /* ─── TRANSPARENCY ─── */
+  .transparency-section { background: var(--cream); }
+
+  .transparency-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: start;
+  }
+
+  .transparency-visual {
+    position: relative;
+  }
+
+  .entity-box {
+    background: white; border-radius: 20px;
+    padding: 32px 28px;
+    border: 1.5px solid rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .entity-box:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+
+  .entity-box.blue-box { background: var(--blue); }
+  .entity-box.blue-box h4 { color: white; }
+  .entity-box.blue-box p { color: rgba(255,255,255,0.65); }
+  .entity-box.blue-box .entity-icon { background: rgba(255,255,255,0.15); }
+
+  .entity-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--blue-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 16px;
+  }
+
+  .entity-box h4 { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+  .entity-box p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  .arrow-connector {
+    text-align: center; padding: 8px 0;
+    color: var(--blue); font-size: 22px;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  .transparency-content .section-title { margin-bottom: 24px; }
+
+  .trust-point {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .trust-point:last-child { border-bottom: none; }
+  .trust-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .trust-point h4 { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .trust-point p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--blue);
+    text-align: center;
+    padding: 120px 48px;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 30% 50%, rgba(107,107,255,0.3) 0%, transparent 60%),
+      radial-gradient(circle at 70% 50%, rgba(15,15,110,0.4) 0%, transparent 60%);
+  }
+
+  .cta-content { position: relative; z-index: 1; }
+
+  .cta-eyebrow {
+    font-size: 12px; letter-spacing: 0.18em; font-weight: 700;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 64px); font-weight: 700;
+    color: white; line-height: 1.1; margin-bottom: 20px;
+  }
+
+  .cta-sub {
+    font-size: 18px; color: rgba(255,255,255,0.65);
+    max-width: 560px; margin: 0 auto 48px;
+    line-height: 1.75; font-weight: 300;
+  }
+
+  .cta-buttons {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
+
+  .cta-form-strip {
+    margin-top: 56px;
+    display: flex; justify-content: center;
+    gap: 0; max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+
+  .cta-input {
+    flex: 1;
+    padding: 16px 24px;
+    border: none; border-radius: 100px 0 0 100px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    background: rgba(255,255,255,0.15);
+    color: white; outline: none;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-right: none;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.4); }
+
+  .cta-submit {
+    padding: 16px 28px;
+    border-radius: 0 100px 100px 0;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 700;
+    border: none; cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .cta-submit:hover { background: white; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    padding: 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 24px;
+  }
+
+  .footer-logo {
+    font-size: 28px; font-weight: 700; color: white;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .footer-logo .devanagari { font-family: 'Noto Sans Malayalam', sans-serif; color: var(--blue-mid); }
+
+  .footer-text { font-size: 13px; color: rgba(255,255,255,0.35); }
+
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--blue-mid); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 72px 24px; }
+    .stats-strip { grid-template-columns: 1fr; padding: 32px 24px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px; }
+    .stat-item:last-child { border-bottom: none; }
+    .problem-cards { grid-template-columns: 1fr; }
+    .flow-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .flow-steps::before { display: none; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .transparency-grid { grid-template-columns: 1fr; }
+    .optional-section { padding: 48px 24px; }
+    .cta-section { padding: 80px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="devanagari">अ</span>SIGN
+  </a>
+  <a href="#join" class="nav-cta">Join the Initiative →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-pattern"></div>
+  <div class="hero-circle-1"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      For Kerala's Licensed Stamp Vendors
+    </div>
+    <div class="hero-logo-mark">
+      <span class="devanagari">अ</span>SIGN
+    </div>
+    <h1 class="hero-headline">
+      Your expertise.<br>
+      <strong>Our technology. More income.</strong>
+    </h1>
+    <p class="hero-malayalam">കേരളത്തിലെ സ്റ്റാമ്പ് വെൻഡർമാർക്ക് സ്വാഗതം</p>
+    <p class="hero-sub">
+      You are the backbone of legal documentation in Kerala. Asign is here to make your work faster, smarter — and give you a new way to earn.
+    </p>
+    <div class="hero-actions">
+      <a href="#how-it-works" class="btn-primary">See How It Works</a>
+      <a href="#join" class="btn-ghost">Join the Pilot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">1,200+</div>
+    <div class="stat-label">Licensed stamp vendors in Kerala</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">₹4,950Cr</div>
+    <div class="stat-label">Stamp & registration revenue per year</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Your choice — join only if it helps you</div>
+  </div>
+</div>
+
+<!-- PROBLEM: THE DAILY GRIND -->
+<section class="problem-section" id="challenge">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-tag reveal">The Current Reality</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      You already do the <em>hard work.</em><br>Let's make it easier.
+    </h2>
+    <p class="section-lead reveal reveal-delay-2">
+      Every day, customers come to you for rental agreements, affidavits, loan documents, and more. You know this work inside out. But some parts of the process are still slower than they need to be.
+    </p>
+
+    <div class="problem-cards">
+      <div class="problem-card reveal reveal-delay-1">
+        <div class="problem-icon">📋</div>
+        <h3>Gathering details takes time</h3>
+        <p>Collecting names, addresses, dates, and terms from customers — sometimes back and forth — before you can even start writing a document.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-2">
+        <div class="problem-icon">🚶</div>
+        <h3>Customers have to come to you</h3>
+        <p>Many customers — especially elderly, or those with busy schedules — find it difficult to visit your shop. You lose business because of distance.</p>
+      </div>
+      <div class="problem-card reveal reveal-delay-3">
+        <div class="problem-icon">📝</div>
+        <h3>Missed earning potential</h3>
+        <p>Right now, you earn from stamp paper margins alone. There's no easy way to charge for the time and expertise you bring to every transaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION: HOW IT WORKS -->
+<section class="solution-section" id="how-it-works">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-tag reveal">The Asign Way</div>
+    <h2 class="section-title reveal reveal-delay-1">
+      A simple tool.<br>A smarter workflow.
+    </h2>
+    <p class="section-lead reveal reveal-delay-2">
+      Asign gives you access to an AI-powered chatbot service. You stay in charge — the chatbot just does the paperwork for you.
+    </p>
+
+    <div class="flow-steps">
+      <div class="flow-step reveal reveal-delay-1">
+        <div class="step-circle">💬</div>
+        <p class="step-num">Step 01</p>
+        <h3>Customer sends a request</h3>
+        <p>Via WhatsApp or phone call, your customer tells the chatbot what document they need.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-2">
+        <div class="step-circle">🤖</div>
+        <p class="step-num">Step 02</p>
+        <h3>Chatbot gathers all details</h3>
+        <p>The AI collects party names, addresses, terms, dates — everything needed — without you lifting a finger.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-3">
+        <div class="step-circle">🖨️</div>
+        <p class="step-num">Step 03</p>
+        <h3>You print & stamp</h3>
+        <p>You receive a ready-to-print document. Affix the stamp paper, sign off, and it's done. Same as always — just faster.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-4">
+        <div class="step-circle">🚚</div>
+        <p class="step-num">Step 04</p>
+        <h3>Deliver & earn a service fee</h3>
+        <p>Deliver to the customer's door and charge a convenience fee — a new income stream, entirely yours to keep.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section" id="benefits">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="benefits-grid">
+      <div class="benefits-visual reveal">
+        <div class="benefit-visual-title">A new income stream,<br>just for you.</div>
+        <div class="benefit-visual-sub">Estimated additional monthly earnings</div>
+
+        <div class="income-display">
+          <div class="income-label">Service fee per document delivery</div>
+          <div class="income-amount">₹100 – ₹300</div>
+          <div class="income-sub">You set the fee. Customers pay for convenience.</div>
+        </div>
+
+        <div class="income-display" style="margin-bottom: 20px;">
+          <div class="income-label">10 deliveries/month × ₹200 avg</div>
+          <div class="income-amount">₹2,000/month</div>
+          <div class="income-sub">On top of your regular stamp paper earnings</div>
+        </div>
+
+        <span class="income-tag">
+          <span>↑</span> Additional income, zero risk
+        </span>
+      </div>
+
+      <div class="benefits-list">
+        <div class="benefit-item reveal reveal-delay-1">
+          <div class="benefit-num">1</div>
+          <div>
+            <h4>Less running around for information</h4>
+            <p>No more asking customers to repeat themselves or come back with missing details. The chatbot handles all data collection cleanly and correctly.</p>
+          </div>
+        </div>
+        <div class="benefit-item reveal reveal-delay-2">
+          <div class="benefit-num">2</div>
+          <div>
+            <h4>Attract more customers — even from far away</h4>
+            <p>Offer doorstep document delivery. Customers who couldn't visit your shop before will now choose you over competitors.</p>
+          </div>
+        </div>
+        <div class="benefit-item reveal reveal-delay-3">
+          <div class="benefit-num">3</div>
+          <div>
+            <h4>Your reputation gets a modern upgrade</h4>
+            <p>Being a vendor who offers digital-assisted, fast service marks you as the go-to professional in your area — especially for businesses and professionals.</p>
+          </div>
+        </div>
+        <div class="benefit-item reveal reveal-delay-4">
+          <div class="benefit-num">4</div>
+          <div>
+            <h4>Free training & ongoing support</h4>
+            <p>The Asign Foundation will train you personally, in your district, in Malayalam. Our field team is always available to help you get started.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPTIONAL — THIS IS YOUR CHOICE -->
+<div class="optional-section">
+  <div class="optional-badge">Your choice. Always.</div>
+  <h2 class="optional-title">No pressure. No obligation.</h2>
+  <p class="optional-body">
+    Asign is an <strong>optional tool</strong> — not a requirement. You are completely free to continue working exactly as you do today. We believe this service will make your life easier and your income higher, but <strong>the decision is entirely yours.</strong> If you try it and don't see value, you can stop at any time.
+  </p>
+</div>
+
+<!-- TRANSPARENCY -->
+<section class="transparency-section" id="how-we-work">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="transparency-grid">
+      <div class="transparency-visual reveal">
+        <div class="entity-box blue-box">
+          <div class="entity-icon">🏛️</div>
+          <h4>Asign Foundation (Non-Profit)</h4>
+          <p>A registered non-profit dedicated entirely to stamp vendors' welfare, training, and digital inclusion. Your voice is represented on our board.</p>
+        </div>
+        <div class="arrow-connector">↕</div>
+        <div class="entity-box">
+          <div class="entity-icon">💻</div>
+          <h4>Shellar Informatics Ltd (Technology)</h4>
+          <p>The technology company that builds and maintains the Asign chatbot and platform. The Foundation pays Shellar a fair, transparent, audited fee for its services.</p>
+        </div>
+        <div class="arrow-connector">↓</div>
+        <div class="entity-box" style="border-color: var(--green); background: rgba(26,201,142,0.05);">
+          <div class="entity-icon" style="background: rgba(26,201,142,0.1);">👥</div>
+          <h4>You — The Vendor</h4>
+          <p>The Foundation serves you. Not the other way around. Vendors have a formal seat at the Foundation's governance table.</p>
+        </div>
+      </div>
+
+      <div class="transparency-content reveal reveal-delay-2">
+        <div class="section-tag">Built on Trust</div>
+        <h2 class="section-title">
+          We are transparent<br>about <em>everything.</em>
+        </h2>
+
+        <div class="trust-point">
+          <span class="trust-icon">🔍</span>
+          <div>
+            <h4>Audited pricing between entities</h4>
+            <p>The fee that the Foundation pays Shellar for technology services is fixed by an independent auditor at fair market rates — not a rupee more.</p>
+          </div>
+        </div>
+        <div class="trust-point">
+          <span class="trust-icon">🗳️</span>
+          <div>
+            <h4>Vendors have a board seat</h4>
+            <p>The Kerala Stamp Vendors Association nominates a representative to sit on the Foundation's Board of Directors. Your concerns are heard at the highest level.</p>
+          </div>
+        </div>
+        <div class="trust-point">
+          <span class="trust-icon">🔒</span>
+          <div>
+            <h4>Your credentials stay with you</h4>
+            <p>Asign never stores or accesses your government portal credentials. Your stamp vendor licence and Treasury account remain fully under your control.</p>
+          </div>
+        </div>
+        <div class="trust-point">
+          <span class="trust-icon">📊</span>
+          <div>
+            <h4>Annual reports published</h4>
+            <p>The Foundation publishes annual financial reports accessible to all members. Every rupee of CSR and grant funding is accounted for and reinvested in vendor welfare.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="join">
+  <div class="cta-content">
+    <p class="cta-eyebrow">Join the Pilot Program</p>
+    <h2 class="cta-title">
+      Be among the first.<br>
+      Shape the future.
+    </h2>
+    <p class="cta-sub">
+      We're onboarding the first 120 vendors across Ernakulam, Thrissur, and Kozhikode. Pilot members get free training, free platform access for 3 months, and priority support from our Foundation team.
+    </p>
+    <div class="cta-buttons">
+      <a href="tel:+91-XXXXXXXXXX" class="btn-primary">📞 Call Us to Register</a>
+      <a href="https://wa.me/91XXXXXXXXXX" class="btn-ghost">💬 WhatsApp Us</a>
+    </div>
+
+    <div class="cta-form-strip">
+      <input class="cta-input" type="text" placeholder="Enter your mobile number…" />
+      <button class="cta-submit" onclick="alert('Thank you! Our team will call you within 24 hours.')">Register Interest →</button>
+    </div>
+
+    <p style="font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 20px;">
+      No commitment required. Our Foundation field team will contact you in Malayalam.
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <span class="devanagari">अ</span>SIGN
+  </div>
+  <p class="footer-text">© 2026 Asign Foundation & Shellar Informatics Ltd. Kerala, India.</p>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Contact</a>
+    <a href="#">Foundation Reports</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(250,250,245,0.97)';
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.06)';
+    } else {
+      nav.style.background = 'rgba(250,250,245,0.92)';
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
